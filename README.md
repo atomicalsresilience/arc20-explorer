@@ -10,7 +10,7 @@ A standalone, open-source desktop app to explore your **ARC-20 tokens, Realms an
 > **No web. No tracking. No middlemen.**
 > Direct TCP/TLS connection from your machine to the Atomicals node of your choice.
 
-⚛ Powered by **[Bitwork Labs](https://github.com/atomicalsresilience)** · _First Bitwork PoW deterministic protocol on BTC_
+⚛ Powered by **[ARC20 Bitwork Labs](https://github.com/atomicalsresilience)** · 
 
 ---
 
