@@ -161,10 +161,10 @@ Donations fund the public ARC-20 Atomicals node infrastructure.
 
 ## License
 
-[MIT](LICENSE) © 2026 Bitwork Labs
+[MIT](LICENSE) © 2026 ARC20 Bitwork Labs
 
 ---
 
-⚛ Powered by Bitwork Labs · First Bitwork PoW deterministic protocol on BTC
+⚛ Powered by ARC20 Bitwork Labs 
 
 
