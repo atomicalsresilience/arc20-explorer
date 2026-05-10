@@ -19,15 +19,12 @@ jobs:
           - os: ubuntu-22.04
             os_name: linux-x86_64
             artifact_ext: tar.gz
-            python_arch: x64
           - os: windows-2022
             os_name: windows-x86_64
             artifact_ext: zip
-            python_arch: x64
           - os: macos-13
             os_name: macos-x86_64
             artifact_ext: tar.gz
-            python_arch: x64
 
     steps:
       - name: Checkout code
@@ -37,14 +34,12 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-          architecture: ${{ matrix.python_arch }}
 
       - name: Get version from tag
         id: version
         shell: bash
         run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
 
-      # ─── LINUX ─────────────────────────────────────
       - name: Install Linux deps
         if: runner.os == 'Linux'
         run: |
@@ -56,16 +51,14 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      # ─── BUILD ─────────────────────────────────────
       - name: Build with PyInstaller
         run: pyinstaller --clean --noconfirm arc20_explorer.spec
 
-      # ─── PACKAGE LINUX/MAC ─────────────────────────
       - name: Package (Linux/macOS)
         if: runner.os != 'Windows'
         shell: bash
         run: |
-          VERSION=${{ steps.version.outputs.VERSION }}
+          VERSION="${{ steps.version.outputs.VERSION }}"
           DIST_NAME="arc20-explorer-v${VERSION}-${{ matrix.os_name }}"
           mkdir -p "dist/${DIST_NAME}"
           cp dist/arc20-explorer "dist/${DIST_NAME}/"
@@ -76,7 +69,6 @@ jobs:
           cd ..
           ls -la dist/
 
-      # ─── PACKAGE WINDOWS ───────────────────────────
       - name: Package (Windows)
         if: runner.os == 'Windows'
         shell: pwsh
@@ -91,27 +83,46 @@ jobs:
           Compress-Archive -Path "dist/$DIST_NAME" -DestinationPath "dist/$DIST_NAME.zip"
           Get-ChildItem dist/
 
-      # ─── CHECKSUMS ─────────────────────────────────
-      - name: Generate checksums (Linux/macOS)
-        if: runner.os != 'Windows'
+      - name: Generate checksums (Linux)
+        if: runner.os == 'Linux'
         shell: bash
         run: |
           cd dist
-          VERSION=${{ steps.version.outputs.VERSION }}
+          VERSION="${{ steps.version.outputs.VERSION }}"
           FILE="arc20-explorer-v${VERSION}-${{ matrix.os_name }}.${{ matrix.artifact_ext }}"
           OUTFILE="${FILE}.checksums.txt"
-          {
-            echo "ARC-20 Explorer · Bitwork Labs · Verification checksums"
-            echo "File: $FILE"
-            echo "Generated: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
-            echo ""
-            if command -v xxhsum >/dev/null 2>&1; then
-              echo "  xxh64:  $(xxhsum -H64 "$FILE" | awk '{print $1}')"
-            fi
-            echo "  sha256: $(shasum -a 256 "$FILE" | cut -d' ' -f1)"
-            echo "  md5:    $(md5sum "$FILE" 2>/dev/null | cut -d' ' -f1 || md5 -q "$FILE")"
-            echo "  bytes:  $(stat -c%s "$FILE" 2>/dev/null || stat -f%z "$FILE")"
-          } > "$OUTFILE"
+          echo "ARC-20 Explorer · Bitwork Labs · Verification checksums" > "$OUTFILE"
+          echo "File: $FILE" >> "$OUTFILE"
+          echo "Generated: $(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$OUTFILE"
+          echo "" >> "$OUTFILE"
+          XX=$(xxhsum -H64 "$FILE" | awk '{print $1}')
+          SHA=$(sha256sum "$FILE" | cut -d' ' -f1)
+          MD=$(md5sum "$FILE" | cut -d' ' -f1)
+          SIZE=$(stat -c%s "$FILE")
+          echo "  xxh64:  $XX" >> "$OUTFILE"
+          echo "  sha256: $SHA" >> "$OUTFILE"
+          echo "  md5:    $MD" >> "$OUTFILE"
+          echo "  bytes:  $SIZE" >> "$OUTFILE"
+          cat "$OUTFILE"
+
+      - name: Generate checksums (macOS)
+        if: runner.os == 'macOS'
+        shell: bash
+        run: |
+          cd dist
+          VERSION="${{ steps.version.outputs.VERSION }}"
+          FILE="arc20-explorer-v${VERSION}-${{ matrix.os_name }}.${{ matrix.artifact_ext }}"
+          OUTFILE="${FILE}.checksums.txt"
+          echo "ARC-20 Explorer · Bitwork Labs · Verification checksums" > "$OUTFILE"
+          echo "File: $FILE" >> "$OUTFILE"
+          echo "Generated: $(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$OUTFILE"
+          echo "" >> "$OUTFILE"
+          SHA=$(shasum -a 256 "$FILE" | cut -d' ' -f1)
+          MD=$(md5 -q "$FILE")
+          SIZE=$(stat -f%z "$FILE")
+          echo "  sha256: $SHA" >> "$OUTFILE"
+          echo "  md5:    $MD" >> "$OUTFILE"
+          echo "  bytes:  $SIZE" >> "$OUTFILE"
           cat "$OUTFILE"
 
       - name: Generate checksums (Windows)
@@ -126,18 +137,15 @@ jobs:
           $md5 = (Get-FileHash -Algorithm MD5 $FILE).Hash.ToLower()
           $size = (Get-Item $FILE).Length
           $date = (Get-Date).ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ")
-          @"
-ARC-20 Explorer · Bitwork Labs · Verification checksums
-File: $FILE
-Generated: $date
-
-  sha256: $sha256
-  md5:    $md5
-  bytes:  $size
-"@ | Out-File -FilePath $OUTFILE -Encoding utf8
+          Set-Content -Path $OUTFILE -Value "ARC-20 Explorer · Bitwork Labs · Verification checksums"
+          Add-Content -Path $OUTFILE -Value "File: $FILE"
+          Add-Content -Path $OUTFILE -Value "Generated: $date"
+          Add-Content -Path $OUTFILE -Value ""
+          Add-Content -Path $OUTFILE -Value "  sha256: $sha256"
+          Add-Content -Path $OUTFILE -Value "  md5:    $md5"
+          Add-Content -Path $OUTFILE -Value "  bytes:  $size"
           Get-Content $OUTFILE
 
-      # ─── UPLOAD ────────────────────────────────────
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -160,26 +168,27 @@ Generated: $date
       - name: Flatten artifacts
         run: |
           mkdir -p release
-          find artifacts -type f \( -name "*.tar.gz" -o -name "*.zip" -o -name "*.checksums.txt" \) -exec cp {} release/ \;
+          find artifacts -type f -name "*.tar.gz" -exec cp {} release/ \;
+          find artifacts -type f -name "*.zip" -exec cp {} release/ \;
+          find artifacts -type f -name "*.checksums.txt" -exec cp {} release/ \;
           ls -la release/
 
       - name: Combine all checksums
         run: |
           cd release
-          {
-            echo "ARC-20 Explorer · Bitwork Labs · Combined checksums"
-            echo "Tag: ${GITHUB_REF#refs/tags/}"
-            echo "Generated: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
-            echo ""
-            for f in *.checksums.txt; do
-              [ -f "$f" ] || continue
-              cat "$f"
-              echo ""
-              echo "─────────────────────────────────────────"
-              echo ""
-            done
-          } > checksums.txt
-          rm -f *.checksums.txt
+          OUTFILE="checksums.txt"
+          echo "ARC-20 Explorer · Bitwork Labs · Combined checksums" > "$OUTFILE"
+          echo "Tag: ${GITHUB_REF#refs/tags/}" >> "$OUTFILE"
+          echo "Generated: $(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$OUTFILE"
+          echo "" >> "$OUTFILE"
+          for f in *.checksums.txt; do
+            if [ "$f" != "checksums.txt" ] && [ -f "$f" ]; then
+              cat "$f" >> "$OUTFILE"
+              echo "" >> "$OUTFILE"
+              echo "─────────────────────────────────────────" >> "$OUTFILE"
+              echo "" >> "$OUTFILE"
+            fi
+          done
           ls -la
 
       - name: Create GitHub Release
@@ -192,34 +201,3 @@ Generated: $date
           generate_release_notes: true
           draft: true
           name: ARC-20 Explorer ${{ github.ref_name }}
-          body: |
-            # ARC-20 Explorer ${{ github.ref_name }}
-
-            Standalone desktop app to explore your ARC-20 tokens, Realms and Bitcoin UTXOs on the Atomicals Protocol.
-
-            ## Downloads
-
-            | Platform | File |
-            |----------|------|
-            | Linux x86_64 | `arc20-explorer-${{ github.ref_name }}-linux-x86_64.tar.gz` |
-            | Windows x86_64 | `arc20-explorer-${{ github.ref_name }}-windows-x86_64.zip` |
-            | macOS Intel | `arc20-explorer-${{ github.ref_name }}-macos-x86_64.tar.gz` |
-
-            ## Verify checksums
-
-            See `checksums.txt` for SHA-256, xxh64 and MD5 hashes of all binaries.
-
-```bash
-            sha256sum arc20-explorer-${{ github.ref_name }}-linux-x86_64.tar.gz
-```
-
-            Compare with the value in `checksums.txt`.
-
-            ## Languages
-
-            11 supported: EN, ZH, ES, KO, RU, JA, PT, VI, TR, ID, FR
-            Native review wanted — see README.
-
-            ⚛ **Powered by Bitwork Labs** · _First Bitwork PoW deterministic protocol on BTC_
-            
-            Donate: `bc1puu9akjm00lunuvx4zceve6at3dhtlg6cv84whrz25xpzastrjfzqh54ukv`
