@@ -80,7 +80,9 @@ jobs:
           Copy-Item "README.md" -Destination "dist/$DIST_NAME/"
           Copy-Item "LICENSE" -Destination "dist/$DIST_NAME/"
           Copy-Item -Recurse "i18n" -Destination "dist/$DIST_NAME/i18n_source"
-          Compress-Archive -Path "dist/$DIST_NAME" -DestinationPath "dist/$DIST_NAME.zip"
+          Push-Location dist
+          Compress-Archive -Path "$DIST_NAME/*" -DestinationPath "$DIST_NAME.zip"
+          Pop-Location
           Get-ChildItem dist/
 
       - name: Generate checksums (Linux)
