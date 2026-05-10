@@ -1,0 +1,71 @@
+{
+  "_meta": {
+    "language_name": "English",
+    "language_code": "en",
+    "needs_native_review": false
+  },
+  "app": {
+    "title": "ARC-20 Explorer",
+    "subtitle": "Bitwork Labs · v{version} · First Bitwork PoW deterministic protocol on BTC",
+    "footer_powered": "Powered by Bitwork Labs",
+    "footer_donate": "Donate"
+  },
+  "welcome": {
+    "screen_title": "ARC-20 Explorer",
+    "screen_intro": "Enter a server, add addresses and press 'Query Portfolio'.",
+    "screen_data_location": "Your data is only stored at {path}",
+    "screen_powered": "Powered by Atomicals ARC20"
+  },
+  "server": {
+    "section_title": "Atomicals Server",
+    "host_label": "Host",
+    "port_label": "Port",
+    "port_help": "50001 = TCP plain   ·   50002 = TLS encrypted",
+    "btn_verify": "Verify",
+    "status_unverified": "Not verified",
+    "status_verifying": "Verifying...",
+    "status_connected": "Connected · {protocol} · Block {block} · {atomicals} atomicals",
+    "status_no_response": "No valid response",
+    "status_error": "Error: {message}",
+    "no_response_short": "No response"
+  },
+  "addresses": {
+    "section_title": "Addresses to query",
+    "input_placeholder": "bc1p... (Bitcoin address)",
+    "btn_add": "Add",
+    "btn_clear_all": "Clear all",
+    "btn_query": "Query Portfolio",
+    "empty_message": "(no addresses yet)",
+    "invalid_title": "Invalid format",
+    "invalid_message": "'{address}' is not a valid Bitcoin address.\nExpected: bc1p... / bc1q... / 1... / 3...",
+    "invalid_short": "Invalid format",
+    "duplicate_title": "Already added",
+    "duplicate_message": "This address is already in the list.",
+    "warn_no_addresses_title": "No addresses",
+    "warn_no_addresses_message": "Add at least one address before querying.",
+    "confirm_clear_title": "Confirm",
+    "confirm_clear_message": "Remove ALL addresses?"
+  },
+  "results": {
+    "section_title": "Results",
+    "loading": "Querying node...",
+    "error_title": "Query error",
+    "stat_addresses": "Addresses",
+    "stat_utxos": "UTXOs",
+    "stat_tokens": "Tokens",
+    "stat_realms": "Realms",
+    "section_realms": "REALMS",
+    "section_tokens": "FUNGIBLE TOKENS",
+    "section_bitcoin": "SPENDABLE BITCOIN",
+    "section_wallets": "WALLETS",
+    "section_errors": "ERRORS",
+    "table_ticker": "TICKER",
+    "table_balance": "BALANCE",
+    "table_utxos": "UTXOs",
+    "table_type": "TYPE",
+    "table_txid_vout": "TXID:VOUT",
+    "table_sats": "SATS",
+    "table_content": "CONTENT",
+    "btc_sats_unit": "sats spendable"
+  }
+}

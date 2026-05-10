@@ -1,0 +1,71 @@
+{
+  "_meta": {
+    "language_name": "Español",
+    "language_code": "es",
+    "needs_native_review": false
+  },
+  "app": {
+    "title": "ARC-20 Explorer",
+    "subtitle": "Bitwork Labs · v{version} · First Bitwork PoW deterministic protocol on BTC",
+    "footer_powered": "Powered by Bitwork Labs",
+    "footer_donate": "Donar"
+  },
+  "welcome": {
+    "screen_title": "ARC-20 Explorer",
+    "screen_intro": "Introduce un servidor, añade direcciones y pulsa 'Consultar Portfolio'.",
+    "screen_data_location": "Tus datos solo se guardan en {path}",
+    "screen_powered": "Powered by Atomicals ARC20"
+  },
+  "server": {
+    "section_title": "Servidor Atomicals",
+    "host_label": "Host",
+    "port_label": "Puerto",
+    "port_help": "50001 = TCP plano   ·   50002 = TLS cifrado",
+    "btn_verify": "Verificar",
+    "status_unverified": "Sin verificar",
+    "status_verifying": "Verificando...",
+    "status_connected": "Conectado · {protocol} · Bloque {block} · {atomicals} atomicals",
+    "status_no_response": "Sin respuesta válida",
+    "status_error": "Error: {message}",
+    "no_response_short": "Sin respuesta"
+  },
+  "addresses": {
+    "section_title": "Direcciones a consultar",
+    "input_placeholder": "bc1p... (dirección Bitcoin)",
+    "btn_add": "Añadir",
+    "btn_clear_all": "Limpiar todas",
+    "btn_query": "Consultar Portfolio",
+    "empty_message": "(sin direcciones todavía)",
+    "invalid_title": "Formato inválido",
+    "invalid_message": "'{address}' no es una dirección Bitcoin válida.\nEsperado: bc1p... / bc1q... / 1... / 3...",
+    "invalid_short": "Formato inválido",
+    "duplicate_title": "Ya existe",
+    "duplicate_message": "Esta dirección ya está en la lista.",
+    "warn_no_addresses_title": "Sin direcciones",
+    "warn_no_addresses_message": "Añade al menos una dirección antes de consultar.",
+    "confirm_clear_title": "Confirmar",
+    "confirm_clear_message": "¿Eliminar TODAS las direcciones?"
+  },
+  "results": {
+    "section_title": "Resultados",
+    "loading": "Consultando nodo...",
+    "error_title": "Error en consulta",
+    "stat_addresses": "Direcciones",
+    "stat_utxos": "UTXOs",
+    "stat_tokens": "Tokens",
+    "stat_realms": "Realms",
+    "section_realms": "REALMS",
+    "section_tokens": "TOKENS FUNGIBLES",
+    "section_bitcoin": "BITCOIN GASTABLE",
+    "section_wallets": "WALLETS",
+    "section_errors": "ERRORES",
+    "table_ticker": "TICKER",
+    "table_balance": "BALANCE",
+    "table_utxos": "UTXOs",
+    "table_type": "TIPO",
+    "table_txid_vout": "TXID:VOUT",
+    "table_sats": "SATS",
+    "table_content": "CONTENIDO",
+    "btc_sats_unit": "sats gastables"
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "_meta": {
+    "language_name": "Русский",
+    "language_code": "ru",
+    "needs_native_review": true
+  },
+  "app": {
+    "title": "ARC-20 Эксплорер",
+    "subtitle": "Bitwork Labs · v{version} · Первый детерминированный Bitwork PoW протокол в BTC",
+    "footer_powered": "При поддержке Bitwork Labs",
+    "footer_donate": "Поддержать"
+  },
+  "welcome": {
+    "screen_title": "ARC-20 Эксплорер",
+    "screen_intro": "Введите сервер, добавьте адреса и нажмите «Проверить портфолио».",
+    "screen_data_location": "Ваши данные хранятся только в {path}",
+    "screen_powered": "При поддержке Atomicals ARC20"
+  },
+  "server": {
+    "section_title": "Сервер Atomicals",
+    "host_label": "Хост",
+    "port_label": "Порт",
+    "port_help": "50001 = TCP открытый   ·   50002 = TLS шифрованный",
+    "btn_verify": "Проверить",
+    "status_unverified": "Не проверено",
+    "status_verifying": "Проверка...",
+    "status_connected": "Подключено · {protocol} · Блок {block} · {atomicals} atomicals",
+    "status_no_response": "Нет действительного ответа",
+    "status_error": "Ошибка: {message}",
+    "no_response_short": "Нет ответа"
+  },
+  "addresses": {
+    "section_title": "Адреса для проверки",
+    "input_placeholder": "bc1p... (Bitcoin адрес)",
+    "btn_add": "Добавить",
+    "btn_clear_all": "Очистить всё",
+    "btn_query": "Проверить портфолио",
+    "empty_message": "(адресов пока нет)",
+    "invalid_title": "Неверный формат",
+    "invalid_message": "'{address}' не является действительным Bitcoin адресом.\nОжидается: bc1p... / bc1q... / 1... / 3...",
+    "invalid_short": "Неверный формат",
+    "duplicate_title": "Уже добавлен",
+    "duplicate_message": "Этот адрес уже в списке.",
+    "warn_no_addresses_title": "Нет адресов",
+    "warn_no_addresses_message": "Добавьте хотя бы один адрес перед проверкой.",
+    "confirm_clear_title": "Подтвердить",
+    "confirm_clear_message": "Удалить ВСЕ адреса?"
+  },
+  "results": {
+    "section_title": "Результаты",
+    "loading": "Запрос к узлу...",
+    "error_title": "Ошибка запроса",
+    "stat_addresses": "Адреса",
+    "stat_utxos": "UTXO",
+    "stat_tokens": "Токены",
+    "stat_realms": "Realms",
+    "section_realms": "REALMS",
+    "section_tokens": "ВЗАИМОЗАМЕНЯЕМЫЕ ТОКЕНЫ",
+    "section_bitcoin": "ДОСТУПНЫЙ BITCOIN",
+    "section_wallets": "КОШЕЛЬКИ",
+    "section_errors": "ОШИБКИ",
+    "table_ticker": "ТИКЕР",
+    "table_balance": "БАЛАНС",
+    "table_utxos": "UTXO",
+    "table_type": "ТИП",
+    "table_txid_vout": "TXID:VOUT",
+    "table_sats": "САТОШИ",
+    "table_content": "СОДЕРЖИМОЕ",
+    "btc_sats_unit": "сатоши доступно"
+  }
+}

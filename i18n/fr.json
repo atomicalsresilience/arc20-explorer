@@ -1,0 +1,71 @@
+{
+  "_meta": {
+    "language_name": "Français",
+    "language_code": "fr",
+    "needs_native_review": true
+  },
+  "app": {
+    "title": "ARC-20 Explorer",
+    "subtitle": "Bitwork Labs · v{version} · Premier protocole Bitwork PoW déterministe sur BTC",
+    "footer_powered": "Propulsé par Bitwork Labs",
+    "footer_donate": "Faire un don"
+  },
+  "welcome": {
+    "screen_title": "ARC-20 Explorer",
+    "screen_intro": "Saisissez un serveur, ajoutez des adresses et appuyez sur 'Consulter Portefeuille'.",
+    "screen_data_location": "Vos données sont enregistrées uniquement dans {path}",
+    "screen_powered": "Propulsé par Atomicals ARC20"
+  },
+  "server": {
+    "section_title": "Serveur Atomicals",
+    "host_label": "Hôte",
+    "port_label": "Port",
+    "port_help": "50001 = TCP simple   ·   50002 = TLS chiffré",
+    "btn_verify": "Vérifier",
+    "status_unverified": "Non vérifié",
+    "status_verifying": "Vérification...",
+    "status_connected": "Connecté · {protocol} · Bloc {block} · {atomicals} atomicals",
+    "status_no_response": "Aucune réponse valide",
+    "status_error": "Erreur: {message}",
+    "no_response_short": "Pas de réponse"
+  },
+  "addresses": {
+    "section_title": "Adresses à consulter",
+    "input_placeholder": "bc1p... (adresse Bitcoin)",
+    "btn_add": "Ajouter",
+    "btn_clear_all": "Tout effacer",
+    "btn_query": "Consulter Portefeuille",
+    "empty_message": "(aucune adresse pour le moment)",
+    "invalid_title": "Format invalide",
+    "invalid_message": "'{address}' n'est pas une adresse Bitcoin valide.\nAttendu: bc1p... / bc1q... / 1... / 3...",
+    "invalid_short": "Format invalide",
+    "duplicate_title": "Déjà ajoutée",
+    "duplicate_message": "Cette adresse est déjà dans la liste.",
+    "warn_no_addresses_title": "Aucune adresse",
+    "warn_no_addresses_message": "Ajoutez au moins une adresse avant de consulter.",
+    "confirm_clear_title": "Confirmer",
+    "confirm_clear_message": "Supprimer TOUTES les adresses?"
+  },
+  "results": {
+    "section_title": "Résultats",
+    "loading": "Consultation du nœud...",
+    "error_title": "Erreur de requête",
+    "stat_addresses": "Adresses",
+    "stat_utxos": "UTXOs",
+    "stat_tokens": "Jetons",
+    "stat_realms": "Realms",
+    "section_realms": "REALMS",
+    "section_tokens": "JETONS FONGIBLES",
+    "section_bitcoin": "BITCOIN DISPONIBLE",
+    "section_wallets": "PORTEFEUILLES",
+    "section_errors": "ERREURS",
+    "table_ticker": "TICKER",
+    "table_balance": "SOLDE",
+    "table_utxos": "UTXOs",
+    "table_type": "TYPE",
+    "table_txid_vout": "TXID:VOUT",
+    "table_sats": "SATS",
+    "table_content": "CONTENU",
+    "btc_sats_unit": "sats disponibles"
+  }
+}

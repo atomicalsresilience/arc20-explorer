@@ -1,0 +1,71 @@
+{
+  "_meta": {
+    "language_name": "한국어",
+    "language_code": "ko",
+    "needs_native_review": true
+  },
+  "app": {
+    "title": "ARC-20 익스플로러",
+    "subtitle": "Bitwork Labs · v{version} · BTC의 최초 Bitwork PoW 결정론적 프로토콜",
+    "footer_powered": "Bitwork Labs 제공",
+    "footer_donate": "기부"
+  },
+  "welcome": {
+    "screen_title": "ARC-20 익스플로러",
+    "screen_intro": "서버를 입력하고 주소를 추가한 후 '포트폴리오 조회'를 누르세요.",
+    "screen_data_location": "데이터는 {path}에만 저장됩니다",
+    "screen_powered": "Atomicals ARC20 제공"
+  },
+  "server": {
+    "section_title": "Atomicals 서버",
+    "host_label": "호스트",
+    "port_label": "포트",
+    "port_help": "50001 = TCP 일반   ·   50002 = TLS 암호화",
+    "btn_verify": "확인",
+    "status_unverified": "확인되지 않음",
+    "status_verifying": "확인 중...",
+    "status_connected": "연결됨 · {protocol} · 블록 {block} · {atomicals} atomicals",
+    "status_no_response": "유효한 응답 없음",
+    "status_error": "오류: {message}",
+    "no_response_short": "응답 없음"
+  },
+  "addresses": {
+    "section_title": "조회할 주소",
+    "input_placeholder": "bc1p... (비트코인 주소)",
+    "btn_add": "추가",
+    "btn_clear_all": "모두 지우기",
+    "btn_query": "포트폴리오 조회",
+    "empty_message": "(아직 주소가 없습니다)",
+    "invalid_title": "잘못된 형식",
+    "invalid_message": "'{address}'은(는) 유효한 비트코인 주소가 아닙니다.\n예상: bc1p... / bc1q... / 1... / 3...",
+    "invalid_short": "잘못된 형식",
+    "duplicate_title": "이미 추가됨",
+    "duplicate_message": "이 주소는 이미 목록에 있습니다.",
+    "warn_no_addresses_title": "주소 없음",
+    "warn_no_addresses_message": "조회하기 전에 주소를 하나 이상 추가하세요.",
+    "confirm_clear_title": "확인",
+    "confirm_clear_message": "모든 주소를 삭제하시겠습니까?"
+  },
+  "results": {
+    "section_title": "결과",
+    "loading": "노드 조회 중...",
+    "error_title": "조회 오류",
+    "stat_addresses": "주소",
+    "stat_utxos": "UTXO",
+    "stat_tokens": "토큰",
+    "stat_realms": "Realms",
+    "section_realms": "REALMS",
+    "section_tokens": "대체 가능 토큰",
+    "section_bitcoin": "사용 가능 비트코인",
+    "section_wallets": "지갑",
+    "section_errors": "오류",
+    "table_ticker": "티커",
+    "table_balance": "잔액",
+    "table_utxos": "UTXO",
+    "table_type": "유형",
+    "table_txid_vout": "TXID:VOUT",
+    "table_sats": "사토시",
+    "table_content": "내용",
+    "btc_sats_unit": "사토시 사용 가능"
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "_meta": {
+    "language_name": "Türkçe",
+    "language_code": "tr",
+    "needs_native_review": true
+  },
+  "app": {
+    "title": "ARC-20 Explorer",
+    "subtitle": "Bitwork Labs · v{version} · BTC üzerindeki ilk Bitwork PoW deterministik protokol",
+    "footer_powered": "Bitwork Labs tarafından",
+    "footer_donate": "Bağış"
+  },
+  "welcome": {
+    "screen_title": "ARC-20 Explorer",
+    "screen_intro": "Bir sunucu girin, adresler ekleyin ve 'Portföy Sorgula'ya basın.",
+    "screen_data_location": "Verileriniz yalnızca {path} konumunda saklanır",
+    "screen_powered": "Atomicals ARC20 tarafından"
+  },
+  "server": {
+    "section_title": "Atomicals Sunucusu",
+    "host_label": "Sunucu",
+    "port_label": "Port",
+    "port_help": "50001 = TCP düz   ·   50002 = TLS şifreli",
+    "btn_verify": "Doğrula",
+    "status_unverified": "Doğrulanmadı",
+    "status_verifying": "Doğrulanıyor...",
+    "status_connected": "Bağlandı · {protocol} · Blok {block} · {atomicals} atomicals",
+    "status_no_response": "Geçerli yanıt yok",
+    "status_error": "Hata: {message}",
+    "no_response_short": "Yanıt yok"
+  },
+  "addresses": {
+    "section_title": "Sorgulanacak adresler",
+    "input_placeholder": "bc1p... (Bitcoin adresi)",
+    "btn_add": "Ekle",
+    "btn_clear_all": "Hepsini temizle",
+    "btn_query": "Portföy Sorgula",
+    "empty_message": "(henüz adres yok)",
+    "invalid_title": "Geçersiz format",
+    "invalid_message": "'{address}' geçerli bir Bitcoin adresi değil.\nBeklenen: bc1p... / bc1q... / 1... / 3...",
+    "invalid_short": "Geçersiz format",
+    "duplicate_title": "Zaten eklendi",
+    "duplicate_message": "Bu adres zaten listede.",
+    "warn_no_addresses_title": "Adres yok",
+    "warn_no_addresses_message": "Sorgulamadan önce en az bir adres ekleyin.",
+    "confirm_clear_title": "Onayla",
+    "confirm_clear_message": "TÜM adresleri kaldır?"
+  },
+  "results": {
+    "section_title": "Sonuçlar",
+    "loading": "Düğüm sorgulanıyor...",
+    "error_title": "Sorgu hatası",
+    "stat_addresses": "Adresler",
+    "stat_utxos": "UTXO",
+    "stat_tokens": "Tokenlar",
+    "stat_realms": "Realms",
+    "section_realms": "REALMS",
+    "section_tokens": "DEĞİŞTİRİLEBİLİR TOKENLAR",
+    "section_bitcoin": "HARCANABİLİR BITCOIN",
+    "section_wallets": "CÜZDANLAR",
+    "section_errors": "HATALAR",
+    "table_ticker": "TICKER",
+    "table_balance": "BAKİYE",
+    "table_utxos": "UTXO",
+    "table_type": "TİP",
+    "table_txid_vout": "TXID:VOUT",
+    "table_sats": "SATS",
+    "table_content": "İÇERİK",
+    "btc_sats_unit": "sats harcanabilir"
+  }
+}

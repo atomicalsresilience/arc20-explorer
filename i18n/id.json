@@ -1,0 +1,71 @@
+{
+  "_meta": {
+    "language_name": "Bahasa Indonesia",
+    "language_code": "id",
+    "needs_native_review": true
+  },
+  "app": {
+    "title": "ARC-20 Explorer",
+    "subtitle": "Bitwork Labs · v{version} · Protokol Bitwork PoW deterministik pertama di BTC",
+    "footer_powered": "Didukung oleh Bitwork Labs",
+    "footer_donate": "Donasi"
+  },
+  "welcome": {
+    "screen_title": "ARC-20 Explorer",
+    "screen_intro": "Masukkan server, tambahkan alamat dan tekan 'Periksa Portfolio'.",
+    "screen_data_location": "Data Anda hanya disimpan di {path}",
+    "screen_powered": "Didukung oleh Atomicals ARC20"
+  },
+  "server": {
+    "section_title": "Server Atomicals",
+    "host_label": "Host",
+    "port_label": "Port",
+    "port_help": "50001 = TCP biasa   ·   50002 = TLS terenkripsi",
+    "btn_verify": "Verifikasi",
+    "status_unverified": "Belum diverifikasi",
+    "status_verifying": "Memverifikasi...",
+    "status_connected": "Terhubung · {protocol} · Blok {block} · {atomicals} atomicals",
+    "status_no_response": "Tidak ada respons valid",
+    "status_error": "Kesalahan: {message}",
+    "no_response_short": "Tidak ada respons"
+  },
+  "addresses": {
+    "section_title": "Alamat untuk diperiksa",
+    "input_placeholder": "bc1p... (alamat Bitcoin)",
+    "btn_add": "Tambah",
+    "btn_clear_all": "Hapus semua",
+    "btn_query": "Periksa Portfolio",
+    "empty_message": "(belum ada alamat)",
+    "invalid_title": "Format tidak valid",
+    "invalid_message": "'{address}' bukan alamat Bitcoin yang valid.\nDiharapkan: bc1p... / bc1q... / 1... / 3...",
+    "invalid_short": "Format tidak valid",
+    "duplicate_title": "Sudah ditambahkan",
+    "duplicate_message": "Alamat ini sudah ada di daftar.",
+    "warn_no_addresses_title": "Tidak ada alamat",
+    "warn_no_addresses_message": "Tambahkan minimal satu alamat sebelum memeriksa.",
+    "confirm_clear_title": "Konfirmasi",
+    "confirm_clear_message": "Hapus SEMUA alamat?"
+  },
+  "results": {
+    "section_title": "Hasil",
+    "loading": "Memeriksa node...",
+    "error_title": "Kesalahan kueri",
+    "stat_addresses": "Alamat",
+    "stat_utxos": "UTXO",
+    "stat_tokens": "Token",
+    "stat_realms": "Realms",
+    "section_realms": "REALMS",
+    "section_tokens": "TOKEN FUNGIBLE",
+    "section_bitcoin": "BITCOIN TERSEDIA",
+    "section_wallets": "DOMPET",
+    "section_errors": "KESALAHAN",
+    "table_ticker": "TICKER",
+    "table_balance": "SALDO",
+    "table_utxos": "UTXO",
+    "table_type": "TIPE",
+    "table_txid_vout": "TXID:VOUT",
+    "table_sats": "SATS",
+    "table_content": "ISI",
+    "btc_sats_unit": "sats tersedia"
+  }
+}
