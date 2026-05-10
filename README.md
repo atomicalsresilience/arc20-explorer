@@ -85,20 +85,9 @@ python3 arc20_explorer.py
 ---
 How it works: 
 
-┌────────────────────────┐
-│      Your machine      │
-│  ┌──────────────────┐  │
-│  │  ARC-20 Explorer │  │
-│  │    (this app)    │  │
-│  └────────┬─────────┘  │
-└───────────┼────────────┘
-            │ 
-            │ TCP/TLS direct
-            ▼
-┌────────────────────┐
-│ Any Atomicals node │
-│ :50001 / :50002    │
-└────────────────────┘
+
+ Your machine  --> ARC-20 Explorer (this app) --> TCP/TLS direct --> Any Atomicals node :50001 / :50002 
+ 
 
 The app makes a direct TCP/TLS connection to the ElectrumX-Atomicals node you specify. **No intermediate servers, no logging, no third-party JavaScript.**
 
