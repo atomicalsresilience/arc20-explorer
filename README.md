@@ -169,7 +169,15 @@ Output:
 - `dist/checksums.txt`
 
 ---
+## 🗺️ Roadmap
 
+See [ROADMAP.md](ROADMAP.md) for the planned evolution of the project.
+
+**Current direction:** Read-only explorer (v1.x) → PSBT companion (v2.x).
+
+The app will never directly handle private keys. For wallet operations, we will integrate with existing trusted wallets (Sparrow, Wizz, hardware wallets) via PSBT.
+
+---
 ## Donate
 
 If you find this useful, consider supporting Bitwork Labs:
