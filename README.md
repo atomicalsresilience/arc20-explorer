@@ -83,17 +83,18 @@ python3 arc20_explorer.py
 **🌍 Help us improve translations!** If you're a native speaker, open a PR editing the corresponding `i18n/<code>.json` file.
 
 ---
+How it works: 
 
-## How it works
 ┌────────────────────────┐
-│  Your machine          │
+│      Your machine      │
 │  ┌──────────────────┐  │
 │  │  ARC-20 Explorer │  │
-│  │  (this app)      │  │
+│  │    (this app)    │  │
 │  └────────┬─────────┘  │
 └───────────┼────────────┘
-│ TCP/TLS direct
-▼
+            │ 
+            │ TCP/TLS direct
+            ▼
 ┌────────────────────┐
 │ Any Atomicals node │
 │ :50001 / :50002    │
