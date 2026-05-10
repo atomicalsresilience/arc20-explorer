@@ -4,13 +4,14 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.10%2B-blue)](https://www.python.org/)
 [![Platform](https://img.shields.io/badge/platform-Linux%20%7C%20Windows%20%7C%20macOS-lightgrey)]()
+[![Signed](https://img.shields.io/badge/Windows-Authenticode%20signed-brightgreen)](signatures/)
 
 A standalone, open-source desktop app to explore your **ARC-20 tokens, Realms and Bitcoin UTXOs** on the [Atomicals Protocol](https://atomicals.xyz).
 
 > **No web. No tracking. No middlemen.**
 > Direct TCP/TLS connection from your machine to the Atomicals node of your choice.
 
-⚛ Powered by **[ARC20 Bitwork Labs](https://github.com/atomicalsresilience)** · 
+⚛ Powered by **[ARC20 Bitwork Labs](https://github.com/atomicalsresilience)** · _First Bitwork PoW deterministic protocol on BTC_
 
 ---
 
@@ -26,41 +27,59 @@ A standalone, open-source desktop app to explore your **ARC-20 tokens, Realms an
   - Fungible tokens (FT) consolidated balance + per-UTXO detail
   - Spendable Bitcoin
   - Per-wallet UTXO listing with TXID:VOUT for each token
+- **Windows .exe is Authenticode-signed** through SignPath.io's free OSS program.
 
 ---
 
-## Quick start
+## 📥 Quick start
 
-### Linux
+### 🪟 Windows (signed with Authenticode ✓)
 
-```bash
-# Download from GitHub Releases (see below for hashes)
-wget https://github.com/atomicalsresilience/arc20-explorer/releases/download/v1.0.0/arc20-explorer-v1.0.0-linux-x86_64.tar.gz
+Download `arc20-explorer-v1.0.0-windows-x86_64.zip` from [Releases](https://github.com/atomicalsresilience/arc20-explorer/releases/latest).
 
-# Verify checksum (recommended!)
-sha256sum arc20-explorer-v1.0.0-linux-x86_64.tar.gz
-# Compare with checksums.txt from the release page
+In PowerShell:
 
-# Extract & run
-tar xzf arc20-explorer-v1.0.0-linux-x86_64.tar.gz
-cd arc20-explorer-v1.0.0-linux-x86_64
-./arc20-explorer
-```
+    # Verify SHA-256 (recommended)
+    Get-FileHash arc20-explorer-v1.0.0-windows-x86_64.zip -Algorithm SHA256
 
-### Windows / macOS
+    # Extract
+    Expand-Archive arc20-explorer-v1.0.0-windows-x86_64.zip
+    cd arc20-explorer-v1.0.0-windows-x86_64
 
-Coming in v1.1.0.
+    # Verify Authenticode signature
+    Get-AuthenticodeSignature .\arc20-explorer.exe | Format-List
 
-### From source
+    # Run
+    .\arc20-explorer.exe
 
-```bash
-git clone https://github.com/atomicalsresilience/arc20-explorer.git
-cd arc20-explorer
-python3 -m venv --system-site-packages venv
-source venv/bin/activate
-pip install -r requirements.txt
-python3 arc20_explorer.py
-```
+> ⚠️ **First-launch note:** Microsoft SmartScreen may show a warning even on signed binaries until reputation is established (normal for new signed projects). Click **More info** → **Run anyway**. Your security comes from the cryptographic signature, not the popup.
+
+### 🐧 Linux
+
+    # Download from GitHub Releases
+    wget https://github.com/atomicalsresilience/arc20-explorer/releases/download/v1.0.0/arc20-explorer-v1.0.0-linux-x86_64.tar.gz
+
+    # Verify SHA-256 (recommended)
+    sha256sum arc20-explorer-v1.0.0-linux-x86_64.tar.gz
+    # Compare with checksums.txt from the release page
+
+    # Extract & run
+    tar xzf arc20-explorer-v1.0.0-linux-x86_64.tar.gz
+    cd arc20-explorer-v1.0.0-linux-x86_64
+    ./arc20-explorer
+
+### 🍎 macOS
+
+Coming in v1.0.1.
+
+### From source (any platform)
+
+    git clone https://github.com/atomicalsresilience/arc20-explorer.git
+    cd arc20-explorer
+    python3 -m venv --system-site-packages venv
+    source venv/bin/activate
+    pip install -r requirements.txt
+    python3 arc20_explorer.py
 
 ---
 
@@ -83,11 +102,8 @@ python3 arc20_explorer.py
 **🌍 Help us improve translations!** If you're a native speaker, open a PR editing the corresponding `i18n/<code>.json` file.
 
 ---
-How it works: 
 
-
- Your machine  --> ARC-20 Explorer (this app) --> TCP/TLS direct --> Any Atomicals node :50001 / :50002 
- 
+## How it works
 
 The app makes a direct TCP/TLS connection to the ElectrumX-Atomicals node you specify. **No intermediate servers, no logging, no third-party JavaScript.**
 
@@ -100,52 +116,57 @@ User data is stored only at:
 
 ## Public Atomicals nodes
 
-You can use **any** Atomicals ElectrumX node. 
+You can use **any** Atomicals ElectrumX node.
 
 Our ARC20 Bitwork Labs node is available at:
 
-Host: arc20bitworklabs.duckdns.org
-Port: 50001 (TCP) or 50002 (TLS)
+    Host: arc20bitworklabs.duckdns.org
+    Port: 50001 (TCP) or 50002 (TLS)
 
+Other public nodes are listed in the [Atomicals Discord](https://discord.com/invite/atomicals).
 
 ---
 
-## Verification
+## ✅ Verification & Signing
 
-All releases are published with **three independent checksums** so you can verify integrity:
+| Platform | Signature | How to verify |
+|----------|-----------|---------------|
+| **Windows** | **Authenticode** ✓ | `Get-AuthenticodeSignature` |
+| Linux | SHA-256 hash | `sha256sum` |
+| macOS | _coming in v1.0.1_ | — |
 
-| Algorithm | Purpose |
-|-----------|---------|
-| `xxh64`   | Fast verification (non-cryptographic) |
-| `sha256`  | Cryptographic verification (standard) |
-| `md5`     | Legacy compatibility |
+Windows `.exe` binaries are digitally signed with an **Authenticode certificate** issued by the [SignPath.io](https://signpath.io) Free OSS Code Signing program (powered by Sectigo CA).
 
-Always check at least the **SHA-256** before running a downloaded binary:
+The signing certificate is published in this repo at [`signatures/ARC20_Indexer.cer`](signatures/ARC20_Indexer.cer) for full transparency.
 
-```bash
-sha256sum arc20-explorer-v1.0.0-linux-x86_64.tar.gz
-```
+**Verify any release before running:**
 
-The hash must match the one published in [`checksums.txt`](https://github.com/atomicalsresilience/arc20-explorer/releases/download/v1.0.0/checksums.txt) on the release page.
+PowerShell (Windows):
+
+    Get-FileHash arc20-explorer-v1.0.0-windows-x86_64.zip -Algorithm SHA256
+    Get-AuthenticodeSignature arc20-explorer.exe | Format-List
+
+Bash (Linux):
+
+    sha256sum arc20-explorer-v1.0.0-linux-x86_64.tar.gz
+
+Compare with values in `checksums.txt` from the release page.
+
+All releases are published with **3 independent checksums** (xxh64, SHA-256, MD5) so you can verify integrity. The most important is **SHA-256** — it's cryptographically secure.
 
 ---
 
 ## Build from source
 
-```bash
-# Clone
-git clone https://github.com/atomicalsresilience/arc20-explorer.git
-cd arc20-explorer
+    git clone https://github.com/atomicalsresilience/arc20-explorer.git
+    cd arc20-explorer
+    chmod +x build.sh
+    ./build.sh
 
-# Build
-chmod +x build.sh
-./build.sh
-
-# Output:
-# - dist/arc20-explorer (executable)
-# - dist/arc20-explorer-v1.0.0-linux-x86_64.tar.gz
-# - dist/checksums.txt
-```
+Output:
+- `dist/arc20-explorer` (executable)
+- `dist/arc20-explorer-v1.0.0-linux-x86_64.tar.gz`
+- `dist/checksums.txt`
 
 ---
 
@@ -153,7 +174,7 @@ chmod +x build.sh
 
 If you find this useful, consider supporting Bitwork Labs:
 
-bc1puu9akjm00lunuvx4zceve6at3dhtlg6cv84whrz25xpzastrjfzqh54ukv
+    bc1puu9akjm00lunuvx4zceve6at3dhtlg6cv84whrz25xpzastrjfzqh54ukv
 
 Donations fund the public ARC-20 Atomicals node infrastructure.
 
@@ -161,10 +182,8 @@ Donations fund the public ARC-20 Atomicals node infrastructure.
 
 ## License
 
-[MIT](LICENSE) © 2026 ARC20 Bitwork Labs
+[MIT](LICENSE) © 2026 Bitwork Labs
 
 ---
 
-⚛ Powered by ARC20 Bitwork Labs 
-
-
+⚛ Powered by Bitwork Labs · First Bitwork PoW deterministic protocol on BTC
